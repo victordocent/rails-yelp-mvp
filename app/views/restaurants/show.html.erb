@@ -7,7 +7,14 @@
     <li class="list-group-item">Content :<%= review.content %>- Rating :<%= review.rating %></li>
   <% end %>
 </ul>
-<%= link_to "Add a review", new_restaurant_review_path(@restaurant) %>
+<div>
+  <%= simple_form_for [@restaurant, @review] do |f| %>
+  <%= f.input :content %>
+  <%= f.input :rating %>
+  <%= f.submit "Submit review", class: "btn btn-primary"%>
+  <% end %>
+</div>
+<%# <%= link_to "Add a review", new_restaurant_review_path(@restaurant) %>
 
 <div>
   <%= link_to "Back to restaurants", restaurants_path %>
